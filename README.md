@@ -6,6 +6,10 @@ I am currently working as a junior web developer by day, so I have about 3 hours
 
 I will be pushing to my repo constantly, so you can see my progress. I will make a remark below starting time and I will push changes to my repo, so my working times are visible.
 
+### Working diary
+
+- 14.1-15.1 night
+
 ## Constraints
 
 - I will try to implement as many core features as possible
@@ -50,4 +54,25 @@ TBD
 
 # TODO
 
-Everything.
+### Frontend
+- write simple tests
+    - heading, button render
+    - fetch and if it doesn't work, error
+    - render after fetch
+- make 3 views
+    - Press teh button
+    - result page
+    - give new data as CSV
+- make get request to backend
+
+## Database init
+
+- Create database and tables for data
+- Parse and validate data before dump
+- dump data
+### Backend
+
+- CSV parsing and validation
+- Endpoints to fetch data from farms with different granularities (by month, by metric)
+- Aggregate calculation endpoints, endpoint which returns monthly averages, min/max and other statistical analysis
+- Input and output validation
