@@ -16,15 +16,14 @@ export const db = mysql.createConnection({
 });
 
 export const create = (dataInsert: Farmdata, callback: Function) => {
-    const queryString = "INSERT INTO farmdata (location, date_time, sensortype, sensor_value) VALUES (?, ?, ?, ?)"
-  
+    const queryString = "INSERT INTO farmdata (location, datetime, sensorType, value) VALUES (?, ?, ?, ?)"
+
     db.query(
       queryString,
       [dataInsert.location, dataInsert.datetime, dataInsert.sensorType, dataInsert.value],
       (err, result) => {
         if (err) {callback(err)};
-  
-        const insertId = (<OkPacket> result).insertId;
+        const insertId = (<OkPacket> result);
         callback(null, insertId);
       }
     );
@@ -33,10 +32,7 @@ export const create = (dataInsert: Farmdata, callback: Function) => {
 export const findAll = (callback: Function) => {
   const queryString = `
     SELECT 
-      location,
-      date_time,
-      sensortype,
-      sensor_value
+      *
     FROM farmdata`
 
   db.query(queryString, (err, result) => {
@@ -45,13 +41,15 @@ export const findAll = (callback: Function) => {
     const rows = <RowDataPacket[]> result;
     const resultData: JSONValue = [];
 
+    console.log(result)
+
     rows.forEach(row => {
       const data: Farmdata =  {
 
           location: row.location,
-          datetime: row.date_time,
-          sensorType: row.sensor_type,
-          value: row.sensor_value
+          datetime: row.datetime,
+          sensorType: row.sensorType,
+          value: row.value
 
       }
       resultData.push(data);
@@ -59,3 +57,76 @@ export const findAll = (callback: Function) => {
     callback(null, resultData);
   });
 }
+
+export const findbyFarm = (farm: any, callback: Function) => {
+  const queryString = `
+    SELECT 
+      *
+    FROM farmdata
+    WHERE location = ?`
+
+  db.query(queryString, [farm], (err, result) => {
+    if (err) {callback(err)}
+
+    const rows = <RowDataPacket[]> result;
+    const resultData: JSONValue = [];
+
+    console.log(result)
+
+    rows.forEach(row => {
+      const data: Farmdata =  {
+
+          location: row.location,
+          datetime: row.datetime,
+          sensorType: row.sensorType,
+          value: row.value
+
+      }
+      resultData.push(data);
+    });
+    callback(null, resultData);
+  });
+}
+
+export const findbyDate = (startdate: any, enddate: any, callback: Function) => {
+  const queryString = `
+    SELECT 
+      *
+    FROM farmdata
+    WHERE datetime <= ? OR datetime >= ?`
+
+  db.query(queryString, [startdate, enddate], (err, result) => {
+    if (err) {callback(err)}
+
+    const rows = <RowDataPacket[]> result;
+    const resultData: JSONValue = [];
+
+    console.log(result)
+
+    rows.forEach(row => {
+      const data: Farmdata =  {
+
+          location: row.location,
+          datetime: row.datetime,
+          sensorType: row.sensorType,
+          value: row.value
+
+      }
+      resultData.push(data);
+    });
+    callback(null, resultData);
+  });
+}
+
+export const deleteAll = (callback: Function) => {
+  const queryString = "TRUNCATE farmdata"
+
+  db.query(
+    queryString,
+    (err, result) => {
+      if (err) {callback(err)};
+      const insertId = (<OkPacket> result);
+      callback(null, insertId);
+    }
+  );
+};

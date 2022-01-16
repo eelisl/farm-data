@@ -5,7 +5,7 @@ import multer from 'multer';
 import fs from 'fs';
 
 //setting up some constants for file handling
-const upload = multer({dest: 'tmp/csv'});
+const upload = multer({dest: '../tmp/csv'});
 
 const readFile = (fileName: string ) => new Promise<any[]>((resolve, reject) => {
   const stream: any = [];
