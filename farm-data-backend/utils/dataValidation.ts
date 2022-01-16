@@ -57,7 +57,7 @@ const validateData = (entry: Farmdata) => {
         }
         
     }
-
+    
     return entry
 
 }

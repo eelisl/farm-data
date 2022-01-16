@@ -23,13 +23,26 @@ I will be pushing to my repo as best as I can, so you can see my progress. I wil
 - backend: Typescript node-server (express)
 - frontend: ReactJS with TailwindCSS
 
-## Prerequisites: 
+## Installation and usage
 
-- clone the whole repository to preferred location
+### Prerequisites: 
+
 - Need to have installed: 
     - node js
     - npm
     - mySql server
+
+### Configurations
+
+#### Clone Git repo
+
+Clone this git repo to your preferred directory.
+
+#### Database
+
+- import a mysql database dump in "data" folder
+- change .env file to represent your preferred mysql database (.env file provided in the email)
+
 
 ### Backend
 
@@ -45,21 +58,9 @@ I will be pushing to my repo as best as I can, so you can see my progress. I wil
 - frontend can be found at "localhost:3000"
 
 
-## Configurations
-
-### Git repo
-
-Clone this git repo to your preferred directory.
-
-### Database
-
-- import a mysql database dump in "data" folder
-- change .env file to represent your preferred mysql database (.env file provided in the email)
-
-
 ## Tests
 
-- All the tests were manual because of time constraints. I started writing some Jest tests at first, but scrapped it, because in order to deliver a MVP and because the app is quite simple, manual tests are the best way to go
+All the tests were manual because of time constraints. I started writing some Jest tests at first, but scrapped it, because in order to deliver a MVP and because the app is quite simple, manual tests are the best way to go
 
 ### How I would've tested, if I was making this to a paying client?
 

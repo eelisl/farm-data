@@ -1,5 +1,8 @@
 # Backend functionality
 
+## Structure
+
+## TODO
 ✔️ Validate data
     ✔️ Accept only temperature,rainfall and PH data. Other metrics should be discarded
     ✔️ Discard invalid values with next rules
